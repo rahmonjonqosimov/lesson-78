@@ -1,0 +1,31 @@
+.navbar {
+  font-family: sans-serif;
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f2f4f7;
+  z-index: 100;
+  .nav__logo {
+    font-size: 40px;
+  }
+  .nav__items {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    a {
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .active {
+      color: #7000ff;
+    }
+  }
+}
