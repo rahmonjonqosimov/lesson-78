@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDeleteUserMutation } from "../../redux/userApi";
 import { motion } from "framer-motion";
-const Product = ({ data, bg, setEdit, setId }) => {
+const Product = ({ data, bg, setEdit, setId, btn }) => {
   const [deleteUser, { isLoading }] = useDeleteUserMutation();
   const handleUserDelete = (id) => {
     deleteUser(id);
@@ -18,14 +18,21 @@ const Product = ({ data, bg, setEdit, setId }) => {
       </div>
       <h4 className="user__age"> {item?.age} years old</h4>
       <p className="user__email">{item?.email}</p>
-      <div className="btns">
-        <button disabled={isLoading} onClick={() => handleUserDelete(item?.id)}>
-          {isLoading ? "Loading..." : "Delete"}
-        </button>
-        <button onClick={() => (setEdit((p) => !p), setId(item?.id))}>
-          Edit
-        </button>
-      </div>
+      {btn ? (
+        <div className="btns">
+          <button
+            disabled={isLoading}
+            onClick={() => handleUserDelete(item?.id)}
+          >
+            {isLoading ? "Loading..." : "Delete"}
+          </button>
+          <button onClick={() => (setEdit((p) => !p), setId(item?.id))}>
+            Edit
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   ));
   return (

@@ -185,3 +185,10 @@
   right: 0;
   background: rgba(0, 0, 0, 0.7);
 }
+
+.admin__dashboard {
+  .admin__outlet {
+    height: auto;
+    min-height: calc(100% - 100px) !important;
+  }
+}

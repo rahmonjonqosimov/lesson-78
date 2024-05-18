@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import User from "../../../components/user/User";
 import { useGetUserQuery } from "../../../redux/userApi";
 import EditUserForm from "../../../components/edit-user/EditUserForm";
+import UserLoading from "../../../components/user-loading/UserLoading";
 
 const UserManager = () => {
   const { data, isLoading } = useGetUserQuery();
@@ -9,7 +10,17 @@ const UserManager = () => {
   const [id, setId] = useState(null);
   return (
     <>
-      <User setId={setId} setEdit={setEdit} data={data} bg={"#fff"} />
+      {isLoading ? (
+        <UserLoading />
+      ) : (
+        <User
+          btn={true}
+          setId={setId}
+          setEdit={setEdit}
+          data={data}
+          bg={"#fff"}
+        />
+      )}
       <EditUserForm id={id} setEdit={setEdit} edit={edit} />
       <div
         onClick={() => setEdit((p) => !p)}
